@@ -21,6 +21,7 @@ class lista:
             self.inicio.anterior = nuevo
             nuevo.siguiente = self.inicio
             self.inicio = nuevo
+            self.cant +=1
         
     def agregar_Final(self,dato):
         nuevo = nodo(dato)
@@ -40,17 +41,44 @@ class lista:
     
     def remplazar(self,dato,pos):
         nuevo = nodo(dato)
-        if not (pos)>(self.cant-1):
+       # if pos == 0:
+       #     self.agregar_inicio(dato)
+
+       #     pass
+       # elif pos ==(self.cant-1):
+        #    self.agregar_Final(dato)
+       #     pass
+        if self.vacio:
+            print("Lista Vacia")
+        elif pos==0:
+            aux = self.inicio
+            if aux.siguiente!=0:
+                nuevo.siguiente = aux.siguiente
+                aux.siguiente.anterior = nuevo
+                self.inicio= nuevo
+            else:
+                self.inicio = nuevo
+        elif pos == (self.cant-1):
+            aux = self.inicio
+            i=0
+            while (i<pos):
+                aux = aux.siguiente
+                i+=1
+            nuevo.anterior = aux.anterior
+            aux.anterior.siguiente = nuevo
+        elif (pos)<=(self.cant-1):
 
             aux = self.inicio
             i=0
             while (i<pos):
                 aux = aux.siguiente
+                i+=1
             aux.siguiente.anterior = nuevo
             nuevo.siguiente = aux.siguiente
             aux.anterior.siguiente = nuevo
             nuevo.anterior = aux.anterior
             self.vacio = False
+            pass
         else:
             print("Posicion no existente")
 
@@ -76,6 +104,7 @@ class lista:
             i=0
             while(i<pos):
                 aux = aux.siguiente
+                i+=1
             if aux.anterior!= None:
                 aux.anterior.siguiente = aux.siguiente
                 if aux.siguiente != None:
@@ -83,9 +112,15 @@ class lista:
                 else:
                     pass
             else:
-                aux.siguiente.anterior = aux.anterior
-                self.inicio = aux.siguiente
-            
+                if self.cant==1:
+                    self.inicio=None
+                    self.vacio=True
+                    
+                    pass
+                else:
+                    aux.siguiente.anterior = aux.anterior
+                    self.inicio = aux.siguiente
+            self.cant-=1
             return True
         else:
             print("posicion no existente")
@@ -97,9 +132,16 @@ class lista:
             aux = self.inicio
             i=0
             if aux.dato == dato:
-                aux.siguiente.anterior = None
-                self.inicio = aux.siguiente
-                return True
+                if aux.siguiente != None:
+                    aux.siguiente.anterior = None
+                    self.inicio = aux.siguiente
+                    self.cant-=1
+                    return True
+                else:
+                    self.cant-=1
+                    self.vacio=True
+                    self.inicio=None
+                    pass
             else:
                 while(aux.siguiente != None):
                     aux = aux.siguiente
@@ -108,8 +150,9 @@ class lista:
                         aux.anterior.siguiente = aux.siguiente
                         if aux.siguiente != None:
                             aux.siguiente.anterior = aux.anterior
-                        else:
-                            pass
+                        
+                        self.cant-=1
+
                         return True
             return False
     
@@ -125,3 +168,16 @@ class lista:
             txt+=" ]"
             print(txt)
         
+    def getPos(self,pos):
+        if self.vacio:
+            print("Lista Vacia")
+        elif pos<=(self.cant-1):
+            aux = self.inicio
+            i=0
+            while(i<pos):
+                aux = aux.siguiente
+                i+=1
+            return aux.dato
+        else:
+            print("Posicion no válida")
+
