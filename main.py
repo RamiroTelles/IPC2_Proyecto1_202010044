@@ -4,7 +4,7 @@ from pisos import piso
 from patron import patron
 
 def menu():
-
+    
     while True:
         print("------------------------------------------------------------------------------------------")
         print("1.Cargar Archivo")
@@ -14,6 +14,7 @@ def menu():
         print("Seleccione una opcion")
         print("------------------------------------------------------------------------------------------")
         x = input()
+        
         if x=='1':
             print("Cargar Archivos")
             tree= ET.parse("pruebas.xml")
@@ -35,6 +36,7 @@ def menu():
                 pisos.agregar_Final(nuevo)
 
         elif x=='2':
+        
             print("Lista de pisos")
             print("------------------------------------------------")
             for i in range(pisos.cant):
@@ -48,6 +50,7 @@ def menu():
                     print(pisos.getPos(i).patrones.getPos(j).codigo)
                     print(pisos.getPos(i).patrones.getPos(j).cadena)
                 print("---------------------------------------------------------")
+            listaPisos(pisos)
         elif x=='3':
             print("Saliendo")
             break
@@ -84,13 +87,13 @@ def listaPisos(pisos):
         else:
             print("Seleccione una opcion válida")
 
-def listaPatrones(patrones):
+def listaPatrones(piso):
     while(True):
         print("------------------------------------------------------------------------------------------")
         i=0
-        while(i<patrones.cant):
-            print(str(i)+ ". "+ str(patrones.getPos(i).codigo))
-            print(str(patrones.getPos(i).cadena))
+        while(i<piso.patrones.cant):
+            print(str(i)+ ". "+ str(piso.patrones.getPos(i).codigo))
+            print(str(piso.patrones.getPos(i).cadena))
             i+=1
         print(str(i)+ ". Volver")
       
@@ -101,7 +104,7 @@ def listaPatrones(patrones):
         if x.isdigit:
             x = int(x)
             if(x!=i):
-                if(x<patrones.cant):
+                if(x<piso.patrones.cant):
                     pass
                 else:
                     print("Seleccione una opcion válida")
@@ -115,24 +118,24 @@ def listaPatrones(patrones):
             continue
         print("------------------------------------------------------------------------------------------")
         i=0
-        while(i<patrones.cant):
-            print(str(i)+ ". "+ str(patrones.getPos(i).codigo))
-            print(str(patrones.getPos(i).cadena))
+        while(i<piso.patrones.cant):
+            print(str(i)+ ". "+ str(piso.patrones.getPos(i).codigo))
+            print(str(piso.patrones.getPos(i).cadena))
             i+=1
         print(str(i)+ ". Volver")
       
 
         print("------------------------------------------------------------------------------------------")
         print("Se seleccionó como patron inicio:")
-        print(str(patrones.getPos(x).codigo))
-        print(str(patrones.getPos(x).cadena))
+        print(str(piso.patrones.getPos(x).codigo))
+        print(str(piso.patrones.getPos(x).cadena))
         print("------------------------------------------------------------------------------------------")
         print("Seleccione el patron Final")
         y = input()
         if y.isdigit:
             y = int(y)
             if(y!=i):
-                if(y<patrones.cant):
+                if(y<piso.patrones.cant):
                     pass
                 else:
                     print("Seleccione una opcion válida")
@@ -145,6 +148,9 @@ def listaPatrones(patrones):
             print("Seleccione una opcion válida")
             continue
         print("------------------------------------------------------------------------------------------")
+        print("Se seleccionó como patron Final:")
+        print(str(piso.patrones.getPos(x).codigo))
+        print(str(piso.patrones.getPos(x).cadena))
         print("------------------------------------------------------------------------------------------")
         print("Cambiando el patron ")
 menu()
