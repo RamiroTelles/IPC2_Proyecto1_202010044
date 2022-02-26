@@ -2,9 +2,10 @@ from lista import lista
 import xml.etree.ElementTree as ET
 from pisos import piso
 from patron import patron
+from metodos import metodos
 
 def menu():
-    
+    funciones = metodos()
     while True:
         print("------------------------------------------------------------------------------------------")
         print("1.Cargar Archivo")
@@ -32,9 +33,10 @@ def menu():
                 for i in obj[4]:
                     pat= patron(i.get('codigo'),i.text.strip())
                     patrones.agregar_Final(pat)
+                patrones =funciones.ordenarPatron(patrones)
                 nuevo =piso(nombre,r_var,c_var,f_var,s_var,patrones)
                 pisos.agregar_Final(nuevo)
-
+            pisos = funciones.ordenarPiso(pisos)
         elif x=='2':
         
             print("Lista de pisos")
