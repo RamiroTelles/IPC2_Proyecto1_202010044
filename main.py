@@ -80,14 +80,57 @@ def listaPisos(pisos):
             x = int(x)
             if(x!=i):
                 if(x<pisos.cant):
-                    listaPatrones(pisos.getPos(x))
-                pass
+                    #listaPatrones(pisos.getPos(x))
+                    opcionPisos(pisos.getPos(x))
+                    pass
             else:
                 break
 
             pass
         else:
             print("Seleccione una opcion válida")
+
+def opcionPisos(piso):
+     while True:
+        print("------------------------------------------------------------------------------------------")
+        print("1.Mostrar grafica del patron")
+        print("2.Cambiar patron")
+        print("3.Salir")
+        print("------------------------------------------------------------------------------------------")
+        print("Seleccione una opcion")
+        print("------------------------------------------------------------------------------------------")
+        x = input()
+        
+        if x=='1':
+            print("------------------------------------------------------------------------------------------")
+            print("Seleccione el patron a mostrar graficamente")
+            print("------------------------------------------------------------------------------------------")
+            patron1 = listaPatrones(piso)
+            print("Mostrar Graficamente")
+
+            pass
+        elif x=='2':
+            print("------------------------------------------------------------------------------------------")
+            print("Seleccione el patron de inicio")
+            print("------------------------------------------------------------------------------------------")
+            patron1 = listaPatrones(piso)
+
+            print("------------------------------------------------------------------------------------------")
+            print("Seleccione el patron final")
+            print("------------------------------------------------------------------------------------------")
+            patron2 = listaPatrones(piso)
+
+            print("ordenando")
+            pass
+           
+        elif x=='3':
+            print("Saliendo")
+            break
+        else:
+            print("Seleccione una opcion Válida")
+
+
+
 
 def listaPatrones(piso):
     while(True):
@@ -97,64 +140,25 @@ def listaPatrones(piso):
             print(str(i)+ ". "+ str(piso.patrones.getPos(i).codigo))
             print(str(piso.patrones.getPos(i).cadena))
             i+=1
-        print(str(i)+ ". Volver")
-      
-
         print("------------------------------------------------------------------------------------------")
-        print("Seleccione el patron de inicio")
+        
         x = input()
         if x.isdigit:
             x = int(x)
-            if(x!=i):
-                if(x<piso.patrones.cant):
-                    pass
-                else:
-                    print("Seleccione una opcion válida")
-                    continue
+            
+            if(x<piso.patrones.cant):
+                return x
+                pass
             else:
-                break
+                print("Seleccione una opcion válida")
+                continue
+            
 
             pass
         else:
             print("Seleccione una opcion válida")
             continue
-        print("------------------------------------------------------------------------------------------")
-        i=0
-        while(i<piso.patrones.cant):
-            print(str(i)+ ". "+ str(piso.patrones.getPos(i).codigo))
-            print(str(piso.patrones.getPos(i).cadena))
-            i+=1
-        print(str(i)+ ". Volver")
-      
-
-        print("------------------------------------------------------------------------------------------")
-        print("Se seleccionó como patron inicio:")
-        print(str(piso.patrones.getPos(x).codigo))
-        print(str(piso.patrones.getPos(x).cadena))
-        print("------------------------------------------------------------------------------------------")
-        print("Seleccione el patron Final")
-        y = input()
-        if y.isdigit:
-            y = int(y)
-            if(y!=i):
-                if(y<piso.patrones.cant):
-                    pass
-                else:
-                    print("Seleccione una opcion válida")
-                    continue
-            else:
-                break
-
-            pass
-        else:
-            print("Seleccione una opcion válida")
-            continue
-        print("------------------------------------------------------------------------------------------")
-        print("Se seleccionó como patron Final:")
-        print(str(piso.patrones.getPos(x).codigo))
-        print(str(piso.patrones.getPos(x).cadena))
-        print("------------------------------------------------------------------------------------------")
-        print("Cambiando el patron ")
+        
 menu()
 
 #elemento = pisos.getPos(3)
