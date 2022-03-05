@@ -11,6 +11,8 @@ class piso():
         self.patrones = patrones
         pass
 
-
+    def cambiarPatron(self,patrones):
+        self.patrones = patrones
+        pass
 
         

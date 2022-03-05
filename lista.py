@@ -179,5 +179,6 @@ class lista:
                 i+=1
             return aux.dato
         else:
-            print("Posicion no válida")
+            #print("Posicion no válida")
+            pass
 

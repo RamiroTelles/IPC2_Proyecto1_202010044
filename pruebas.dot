@@ -1,0 +1,20 @@
+digraph L{
+    node[shape=box style=filled]
+    subgraph cuadro{
+
+        nod00[fillcolor=white, group=0 label=""]
+        nod01[fillcolor=black, group=1 label=""]
+        nod02[fillcolor=black, group=2 label=""]
+        nod03[fillcolor=black, group=3 label=""]
+        nod04[fillcolor=black, group=3 label=""]
+        
+      
+       
+     
+        edge[fillcolor=white,color=white]
+      
+        
+     
+      
+    }
+}
