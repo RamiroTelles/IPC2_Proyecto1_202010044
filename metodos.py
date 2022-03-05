@@ -252,6 +252,7 @@ class metodos():
         resultados = lista()
         resultados.agregar_Final(costoTotal)
         resultados.agregar_Final(pasos)
+        resultados.agregar_Final(patronInicio)
         return resultados
 
             

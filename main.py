@@ -91,7 +91,8 @@ def listaPisos(pisos):
             print("Seleccione una opcion válida")
 
 def opcionPisos(piso):
-     while True:
+    funciones = metodos()
+    while True:
         print("------------------------------------------------------------------------------------------")
         print("1.Mostrar grafica del patron")
         print("2.Cambiar patron")
@@ -121,6 +122,18 @@ def opcionPisos(piso):
             patron2 = listaPatrones(piso)
 
             print("ordenando")
+            print("------------------------------------------------------------------------------------------")
+            resultados = funciones.cambiarPatron(int(piso.C),int(piso.F),int(piso.S),piso.patrones.getPos(patron1),piso.patrones.getPos(patron2))
+            print("------------------------------------------------------------------------------------------")
+
+            print("Costo total "+ "\"Q"+ str(resultados.getPos(0)) + "\"")
+
+            print("Pasos")
+            print("--------------------------------------")
+            print(resultados.getPos(1))
+            print("--------------------------------------")
+            print("Mostrar grafica del patron final")
+
             pass
            
         elif x=='3':
