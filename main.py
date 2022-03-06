@@ -3,7 +3,7 @@ import xml.etree.ElementTree as ET
 from pisos import piso
 from patron import patron
 from metodos import metodos
-
+from os import system,startfile
 def menu():
     funciones = metodos()
     while True:
@@ -18,7 +18,11 @@ def menu():
         
         if x=='1':
             print("Cargar Archivos")
-            tree= ET.parse("pruebas.xml")
+            print("-----------------------------------------------------------------------------------------")
+            print("Ingrese la ruta")
+            print("-----------------------------------------------------------------------------------------")
+            ruta = input()
+            tree= ET.parse(ruta)
 
             raiz = tree.getroot()
 
@@ -108,7 +112,18 @@ def opcionPisos(piso):
             print("------------------------------------------------------------------------------------------")
             patron1 = listaPatrones(piso)
             print("Mostrar Graficamente")
+            patronMostrar= lista()
 
+            for i in piso.patrones.getPos(patron1).cadena:
+                patronMostrar.agregar_Final(i)
+
+            funciones.graficarPatron(int(piso.R),int(piso.C),patronMostrar)
+            system("dot -Tpng grafica.dot -o grafica.png")
+
+            system('dot -Tpng grafica.dot -o grafica.png')
+ 
+            system("cd ./grafica.png")
+            startfile("grafica.png")
             pass
         elif x=='2':
             print("------------------------------------------------------------------------------------------")
@@ -133,7 +148,18 @@ def opcionPisos(piso):
             print(resultados.getPos(1))
             print("--------------------------------------")
             print("Mostrar grafica del patron final")
+            #patronMostrar= lista()
 
+            #for i in piso.patrones.getPos(x).cadena:
+                #patronMostrar.agregar_Final(i)
+
+            funciones.graficarPatron(int(piso.R),int(piso.C),resultados.getPos(2))
+            system("dot -Tpng grafica.dot -o grafica.png")
+
+            system('dot -Tpng grafica.dot -o grafica.png')
+ 
+            system("cd ./grafica.png")
+            startfile("grafica.png")
             pass
            
         elif x=='3':

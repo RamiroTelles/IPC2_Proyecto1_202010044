@@ -1,11 +1,14 @@
 
 from lista import lista
 from patron import patron
+from os import system,startfile
 
 class metodos():
 
     def __init__(self) -> None:
         pass
+
+
 
     def ordenarPiso(self,lista):
         
@@ -255,4 +258,43 @@ class metodos():
         resultados.agregar_Final(patronInicio)
         return resultados
 
-            
+    def graficarPatron(self,r,c,patron):
+
+        encabezado = '''
+digraph L{
+    node[shape=box style=filled]
+    subgraph cuadro{  
+        '''
+        cuerpo =""
+        #crear nodos
+        for i in range(r):
+            for j in range(c):
+                cuerpo+= "nod"+str(i)+str(j)+"["
+                if patron.getPos((i*c)+(j)).upper()=='W':
+                    cuerpo+="fillcolor=white,"
+                else:
+                    cuerpo+="fillcolor=black,"
+                cuerpo+="group=" + str(j)+ " label=\"\""
+                cuerpo+="]\n"
+        cuerpo+="edge[fillcolor=white,color=white]\n"
+
+        for j in range(c):
+            for i in range(r-1):
+                cuerpo+="nod"+str(i)+str(j)+"->"+ " nod" +str(i+1)+str(j) +"\n"
+
+        pie='''
+        }
+}'''    
+        documento = encabezado + cuerpo + pie
+        ruta = "grafica.dot"
+        try:
+            myfile = open("grafica.dot","w")
+            myfile.write(documento)
+            myfile.close
+        #"dot -Tpng grafica.dot -o grafica.png"
+        
+
+        #dot -Tpng C:\Users\ramir\Desktop\grafica.dot -o grafica.png
+       
+        except:
+            print("error")
