@@ -52,6 +52,7 @@ class lista:
             print("Lista Vacia")
         elif pos==0:
             aux = self.inicio
+            #nose porque esta el 0 en ese if, pero funciona     
             if aux.siguiente!=0:
                 nuevo.siguiente = aux.siguiente
                 aux.siguiente.anterior = nuevo
@@ -87,7 +88,7 @@ class lista:
             print("Lista Vacia")
         else:
             aux = self.inicio
-            i=0
+            i=0 
             if aux.dato == dato:
                 return i
             else:
